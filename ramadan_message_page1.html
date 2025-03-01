@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Ramadan</title>
+    <style>
+        body {
+            background: url('ram2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            float: left;
+            background-image: url('ram1.jpg');
+            background-color: aqua;
+            background-blend-mode: multiply;
+            background-size:cover;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+        h1 {
+            font-family: "Cursive", sans-serif;
+            font-weight: bolder;
+            font-style:oblique;
+            color: antiquewhite;
+            font-size: 30px;
+        }
+        p
+        input, textarea, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            color: hsl(0, 4%, 5%);
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background: #8a6df0;
+            color: black;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        marquee {
+            font-weight: bolder;
+            background-image: url('ram3.jpg');
+            background-size: cover ;
+            color: hsl(120, 3%, 6%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌙 Happy Ramadan 🌙</h1>
+        <p1>"May this Ramadan bring you peace, happiness, and countless blessings. Share this message with your loved ones!"</p1>
+
+        <h3>Share this message</h3>
+        <form id="shareForm">
+            <input type="text" id="fullName" placeholder="Enter Your Full Name" required>
+            <textarea id="comment" placeholder="Enter a heartfelt message..." required></textarea>
+
+            <label>Select platform to share:</label>
+            <select id="platform">
+                <option value="whatsapp">WhatsApp</option>
+                <option value="email">Email</option>
+            </select>
+
+            <input type="text" id="receiver" placeholder="Enter recipient's number or email" required>
+
+            <button type="button" onclick="shareMessage()">Share Now</button>
+        </form>
+
+        <p><strong>❤️ Likes: <span id="likeCount">0</span></strong></p>
+        <button onclick="likeMessage()">👍 Like</button>
+
+        <div class="footer">
+            <marquee>Created by Matsiko Muma Muhammad | Contact: 0706773540 for custom designs.</marquee>
+        </div>
+    </div>
+
+    <script>
+        function shareMessage() {
+            var name = document.getElementById("fullName").value;
+            var comment = document.getElementById("comment").value;
+            var platform = document.getElementById("platform").value;
+            var receiver = document.getElementById("receiver").value;
+            
+            if (!name || !comment || !receiver) {
+                alert("Please fill in all fields before sharing.");
+                return;
+            }
+
+            var message = `🌙 Happy Ramadan! 🌙
+
+"${comment}"
+
+- From ${name}`;
+            
+            if (platform === "whatsapp") {
+                window.open(`https://wa.me/${receiver}?text=${encodeURIComponent(message)}`);
+            } else if (platform === "email") {
+                window.location.href = `mailto:${receiver}?subject=Happy Ramadan&body=${encodeURIComponent(message)}`;
+            }
+        }
+
+        function likeMessage() {
+            var likeCount = document.getElementById("likeCount");
+            likeCount.innerText = parseInt(likeCount.innerText) + 1;
+        }
+    </script>
+</body>
+</html>
